@@ -1,0 +1,12 @@
+FROM golang:alpine AS build
+
+WORKDIR /bin/project
+RUN go mod init exemple/fullcyclerocks
+RUN echo -e "package main\n\nimport \"fmt\"\n\nfunc main() {\nfmt.Println(\"Full Cycle Rocks!!\")\n}" >> fullcyclerocks.go 
+RUN go build -o /bin/project
+
+FROM scratch
+COPY --from=build /bin/project/fullcyclerocks /bin/project/fullcyclerocks
+CMD ["/bin/project/fullcyclerocks"]
+
+
