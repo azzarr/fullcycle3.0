@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+
+  db:
+    image: mysql
+    command: --innodb-use-native-aio=0
+    tty: true
+    ports:
+            - "3306:3036"
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=mybase
+    volumes:
+      - ./mysqldb:/var/lib/mysql
+      - ./schema.sql:/docker-entrypoint-initdb.d/schema.sql:ro
+    networks:
+      - fullcycle3.0
+
+  # nginx:
+  #   image: nginx
+  #   networks:
+  #     - fullcycle3.0
+
+networks:
+  fullcycle3.0:
+    driver: bridge
+  
+
+    
