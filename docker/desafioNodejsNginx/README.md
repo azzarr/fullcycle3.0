@@ -11,16 +11,7 @@ Suba tudo em um repositório e faça a entrega.
 * A linguagem de programação para este desafio é Node/JavaScript.
 
 
-repo: https://github.com/devfullcycle/fc-devops-docker
+ 
 
-
-Container
-1. - nxinx proxy - ingess
-2. - mysql table people {id, nome}
-3. - node project 
-
-Utilizar docker-compose
-a porta externa 8080
-
-
-
+> execute nesta pasta \
+> docker compose up -d
