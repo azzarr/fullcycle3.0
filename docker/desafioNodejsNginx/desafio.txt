@@ -22,3 +22,5 @@ Container
 Utilizar docker-compose
 a porta externa 8080
 
+
+

@@ -7,7 +7,7 @@ services:
     command: --innodb-use-native-aio=0
     tty: true
     ports:
-            - "3306:3036"
+      - "3306:3306"
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=mybase
@@ -16,11 +16,33 @@ services:
       - ./schema.sql:/docker-entrypoint-initdb.d/schema.sql:ro
     networks:
       - fullcycle3.0
+    healthcheck:
+            test: ["CMD", 'mysqladmin', 'ping', '-h', 'localhost', '-u$$MYSQL_ROOT_PASSWORD', '-p$$MYSQL_ROOT_PASSWORD' ]
+            start_period: 5s
+            interval: 5s
+            timeout: 5s
+            retries: 55
+  node:
+    image: azzarr/fullcyle30desafionodenginx
+    ports:
+        - "3000:3000"
+    depends_on:
+       db:
+        condition: service_healthy
+    networks:
+      - fullcycle3.0
 
-  # nginx:
-  #   image: nginx
-  #   networks:
-  #     - fullcycle3.0
+  nginx:
+    image: azzarr/fullcyle30desafionodenginx_reverseproxy
+    ports:
+      - 8080:8080
+    depends_on:
+      db:
+        condition: service_healthy
+      node:
+        condition: service_started
+    networks:
+      - fullcycle3.0
 
 networks:
   fullcycle3.0:
