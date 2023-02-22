@@ -24,7 +24,7 @@ Para podermos assinar algo digitalmente, primeiro precisamos de um certificado d
 > gpg --armor --export \<id da chave> 
 * sua chave é da linha ----- ate o fim; é ela que você vai informar no github e etc
 
-
+A492B00DD2DFC17E
 ## Identificando a Chave ao GIT
 > git config --global user.signingkey \<id da chave>  
 > export GPG_TTY=$(tty)
@@ -33,7 +33,7 @@ agora o Git sabe qual chave utilizar,
 
 ## Assiando todos os Commits
 use --global para todos e sem --global para o repositorio atual.
->git config --global commit.gpgsign true
+>git config [--global] commit.gpgsign true
 
 
 ## Assinando apenas commit especifico
