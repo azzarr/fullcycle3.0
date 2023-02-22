@@ -68,4 +68,6 @@ ou via linha de comando
 3. informe o Git do arquivo
 > git config [--global] gpg.ssh.allowedSignersFile "~/.ssh/allowed_signers"
 
+
+[mais erros](https://calebhearth.com/sign-git-with-ssh)
     

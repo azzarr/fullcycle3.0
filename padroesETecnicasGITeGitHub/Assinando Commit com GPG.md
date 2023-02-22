@@ -3,7 +3,7 @@
 
 ## Listando as chaves existentes
 Esse comando lista todas as chaves criadas pelo gpg
-> gpg --list-secret-key --keyid-from LONG
+> gpg --list-secret-key --keyid-form LONG
 
 ## Criando uma chave RSA
 Para podermos assinar algo digitalmente, primeiro precisamos de um certificado digital, então vamos criar um para nos
